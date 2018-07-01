@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar  color="primary">
+    <ion-title>
+      BeerCraft
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+  <button ion-button round outline type="button" (click)="sort()">Alcoh Ascending</button>
+  <button ion-button round outline type="button" (click)="sorta()">Alcoh Descending</button>
+  <ion-list >
+    <ion-item *ngFor="let c of countries | search : terms | sort: {property: column, order: order}" >
+      <ion-avatar item-left>
+        <img  class="myavt" src="{{c.flag}}" style="max-width:100rem; max-height:150rem;">
+      </ion-avatar>
+    
+      <h2>{{c.name}}<br> Style: {{c.style}}</h2>
+      <h3> Alcohol content: {{c.abv}}, Bittering units: {{c.ibu}}, Ounces: {{c.ounces}}</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>
